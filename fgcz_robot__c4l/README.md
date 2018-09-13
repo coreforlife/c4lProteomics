@@ -14,6 +14,9 @@
 
 
 ## Input
+
+`SOURCE="/srv/www/htdocs/Data2San/"`
+
 ```
 p1000/Proteomics/QEXACTIVE_2/tobiasko_20180913/20180815_01_autoQC01.raw
 p1000/Proteomics/QEXACTIVEHF_2/lkunz_20180907_test/20180907_001_autoQC01.raw
