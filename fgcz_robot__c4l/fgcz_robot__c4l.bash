@@ -47,7 +47,7 @@ function generate_lftp_cmd(){
   ftpdir=`echo "$file D$dateYM" \
     | sed -n 's/.*Proteomics\/\([A-Z]*_[1-9]\)\/[a-z]*_20\([1-9][0-9][01][0-9]\)[0123][0-9].*\/\(.*\([qQ][cC]0[12]\|[qQ][cC]4[lL]\).*\.raw\).D\([0-9]*\)$/\/fgcz\/\1\/\5\/\4/p'`
 
-  grep -l "$ff" ~cpanse/.lftp/transfer_log 1>/dev/null 2>/dev/null \
+  grep -l "$ff" ~/.lftp/transfer_log 1>/dev/null 2>/dev/null \
   || echo "mirror -R --no-recursion --include $ff $SOURCE/$dd/ $ftpdir" 
 }
 
