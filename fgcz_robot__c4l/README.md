@@ -48,7 +48,7 @@ p2748/Proteomics/FUSION_2/lkunz_20180911_OID4763/20180911_025_autoQC01.raw
 2018-09-13 12:59:05 /srv/www/htdocs/Data2San/p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_005_autoQC01.raw -> ftp://proteomics@perelman.crg.es/fgcz/QEXACTIVEHF_2/1809/QC01/20180913_005_autoQC01.raw 0-63243099 38.93 MiB/s
 ```
 
-# Some statistics
+## Some statistics
 
 ```{bash}
 #!/bin/bash
@@ -77,6 +77,4 @@ EOF
 <img width="1665" alt="screen shot 2018-09-13 at 13 09 42" src="https://user-images.githubusercontent.com/4901987/45484991-51aa8400-b756-11e8-88b7-68230f6590cc.png">
 
 <img width="1662" alt="screen shot 2018-09-13 at 13 42 49" src="https://user-images.githubusercontent.com/4901987/45486604-05624280-b75c-11e8-96a2-125100635c5f.png">
-
-
 
