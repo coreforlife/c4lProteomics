@@ -1,5 +1,8 @@
 # FGCZ transfer script 
 
+copies all autoQC instrument files from http://fgcz-ms.uzh.ch to ftp://proteomics@perelman.crg.es/fgcz
+using `lftp` and `cron`
+
 ## Requirements
 
 -  linux, lftp, cron
