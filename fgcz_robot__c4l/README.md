@@ -54,12 +54,23 @@ cat transfer_log* \
   | awk '{print $1" "$(NF-1)" "$NF}' \
   > transfer.txt \
   && R --no-save <<EOF
-S <- read.table("transfer.txt")
+op <- par(mfrow = c(2,1))
 boxplot(S[,'V2'] ~ substr(S[,'V1'], 1, 7),
   log='y',
   main='FGCZ lftp/transfer_log to ftp://proteomics@perelman.crg.es/',
   ylab='throughput [MiB/s]',
   xlab='time YYYY-MM')
+
+plot(table(substr(S[,'V1'],1,7)),
+  type='b',
+  ylab='number of transfered files',
+  xlab='time YYYY-MM')
+
 EOF
 ```
 <img width="1665" alt="screen shot 2018-09-13 at 13 09 42" src="https://user-images.githubusercontent.com/4901987/45484991-51aa8400-b756-11e8-88b7-68230f6590cc.png">
+
+<img width="1662" alt="screen shot 2018-09-13 at 13 42 49" src="https://user-images.githubusercontent.com/4901987/45486604-05624280-b75c-11e8-96a2-125100635c5f.png">
+
+
+
