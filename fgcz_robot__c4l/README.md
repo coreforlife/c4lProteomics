@@ -3,7 +3,7 @@
 ## Requirements
 
 -  linux, lftp, cron
--  ftp auth are keept in ~/.netrc 
+-  ftp auth are kept in ~/.netrc 
 
 
 ## Platforms and versions the software has been deployed
