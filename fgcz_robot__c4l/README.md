@@ -10,7 +10,7 @@
 
 |platform|platform version|bash version|note|
 | :------- |:--------------|:------|:------- |
-|Linux| 3.16.43-2+deb8u2 |  4.3.30(1)-release | [FCGZ fileserver](fgcz-ms.uzh.ch)|
+|Linux| 3.16.43-2+deb8u2 |  4.3.30(1)-release | [FGCZ fileserver](http://fgcz-ms.uzh.ch)|
 
 
 ## Input
