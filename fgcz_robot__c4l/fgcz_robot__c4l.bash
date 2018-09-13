@@ -16,6 +16,17 @@
 # Requirements:
 #   linux, lftp, cron
 #   ftp auth are keept in ~/.netrc 
+#   expect files are kept in '/srv/www/htdocs/Data2San/' having the following file system hierarchy
+# p1000/Proteomics/QEXACTIVE_2/tobiasko_20180913/20180815_01_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/lkunz_20180907_test/20180907_001_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_001_autoQC01.raw
+# p1531/Proteomics/QEXACTIVEHF_1/selevsek_20180911/20180911_22_autoQC01.raw
+# p2883/Proteomics/QEXACTIVEHFX_1/lkunz_20180913_OID4796_DIA/20180913_001_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_002_autoQC01.raw
+# p2883/Proteomics/QEXACTIVEHFX_1/lkunz_20180913_OID4796_DIA/20180913_002_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_003_autoQC01.raw
+# p1000/Proteomics/FUSION_1/roschi_20180809_autoQC/20180912_07_autoQC01.raw
+# p2748/Proteomics/FUSION_2/lkunz_20180911_OID4763/20180911_025_autoQC01.raw
 
 set -e
 set -o pipefail
