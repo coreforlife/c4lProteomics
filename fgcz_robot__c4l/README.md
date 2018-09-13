@@ -57,7 +57,8 @@ cat transfer_log* \
   | grep perelman.crg.es \
   | grep  "MiB/s$" \
   | sort \
-  | awk '{print $1" "$(NF-1)" "$NF}' \
+  | awk '/_auto[qQ][cC]01/{QC=1}/_auto[qQ][cC]02/{QC=2}/_auto[qQ][cC]4L/{QC=4}{print $1" "$(NF-1)" "$NF" "QC}' \
+  | awk 'NF==4{print}' \
   > transfer.txt \
   && R --no-save <<EOF
 op <- par(mfrow = c(2,1))
