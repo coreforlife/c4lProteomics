@@ -1,4 +1,19 @@
-# input
+# FGCZ transfer script 
+
+## Requirements
+
+-  linux, lftp, cron
+-  ftp auth are keept in ~/.netrc 
+
+
+## Platforms and versions the software has been deployed
+
+|platform|platform version|bash version|note|
+| :------- |:--------------|:------|:------- |
+|Linux| 3.16.43-2+deb8u2 |  4.3.30(1)-release | [FCGZ fileserver](fgcz-ms.uzh.ch)|
+
+
+## Input
 ```
 p1000/Proteomics/QEXACTIVE_2/tobiasko_20180913/20180815_01_autoQC01.raw
 p1000/Proteomics/QEXACTIVEHF_2/lkunz_20180907_test/20180907_001_autoQC01.raw
@@ -12,7 +27,7 @@ p1000/Proteomics/FUSION_1/roschi_20180809_autoQC/20180912_07_autoQC01.raw
 p2748/Proteomics/FUSION_2/lkunz_20180911_OID4763/20180911_025_autoQC01.raw
 ```
 
-# output  (`tail transfer_log`)
+## Output  (`tail transfer_log`)
 
 ```
 2018-09-13 10:59:06 /srv/www/htdocs/Data2San/p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_001_autoQC01.raw -> ftp://proteomics@perelman.crg.es/fgcz/QEXACTIVEHF_2/1809/QC01/20180913_001_autoQC01.raw 0-63329767 38.20 MiB/s
@@ -27,7 +42,8 @@ p2748/Proteomics/FUSION_2/lkunz_20180911_OID4763/20180911_025_autoQC01.raw
 2018-09-13 12:59:05 /srv/www/htdocs/Data2San/p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_005_autoQC01.raw -> ftp://proteomics@perelman.crg.es/fgcz/QEXACTIVEHF_2/1809/QC01/20180913_005_autoQC01.raw 0-63243099 38.93 MiB/s
 ```
 
-# statistics
+# Some statistics
+
 ```{bash}
 #!/bin/bash
   
