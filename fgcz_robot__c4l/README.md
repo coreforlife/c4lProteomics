@@ -71,6 +71,8 @@ plot(table(substr(S[,'V1'],1,7)),
   type='b',
   ylab='number of transfered files',
   xlab='time YYYY-MM')
+  
+table(X<- data.frame(month=substr(S[,'V1'],1,7),QC=S$V4))
 
 EOF
 ```
