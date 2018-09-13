@@ -16,8 +16,6 @@
 # Requirements:
 #   linux, lftp, cron
 #   ftp auth are keept in ~/.netrc 
-# cron config
-#   */59 * * * *  /srv/FGCZ/fgcz/computer/fgcz-s-021/sync/fgcz_robot__c4l.bash 2>&1 >> ~/data/c4l_lftp.log
 
 set -e
 set -o pipefail
