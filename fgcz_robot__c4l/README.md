@@ -84,3 +84,9 @@ EOF
 
 
 <img width="661" alt="screen shot 2018-09-13 at 16 37 43" src="https://user-images.githubusercontent.com/4901987/45495371-6cd7bc80-b773-11e8-8fda-36444832c5a4.png">
+
+# more statistics using [rawDiag](https://github.com/fgcz/rawDiag)
+
+<img width="649" alt="screen shot 2018-10-16 at 23 49 41" src="https://user-images.githubusercontent.com/4901987/47049756-8919af80-d19e-11e8-8bb0-041776c6717b.png">
+
+<img width="792" alt="screen shot 2018-10-16 at 23 52 52" src="https://user-images.githubusercontent.com/4901987/47049793-a5b5e780-d19e-11e8-8ae9-75ad64f242a1.png">
