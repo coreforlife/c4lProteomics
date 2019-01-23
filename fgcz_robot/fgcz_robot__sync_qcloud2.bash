@@ -28,6 +28,17 @@ declare -A labsysid=(["QEXACTIVEHF_2"]="41102513-a4c3-4e23-9a05-3151620a7c8c"
 
 input=/srv/www/htdocs/Data2San/sync_LOGS/pfiles.txt
 
+
+#######################################
+# Compose one lftp command for each not transfered raw file 
+# Globals:
+#   labsysid
+# Arguments:
+#  prefix filepath filename instrument qctype md5
+#   None
+# Returns:
+#   stdout
+#######################################
 function compose_lftp_command () {
   grep $6 ~/.lftp/transfer_log > /dev/null
   if [ $? -eq 0 ]
