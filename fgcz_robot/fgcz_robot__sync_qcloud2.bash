@@ -6,7 +6,7 @@
 # our system look like that:
 # */59 * * * * (fgcz_robot__sync_qcloud2.bash | qcloud-ext@perelman.crg.es) 2>&1 >> ~/data/c4l_lftp.log
 #
-# Author: Christian Panse <cp@fgcz.ethz.ch>
+# Author: Christian Panse <cp@fgcz.ethz.ch>, 2019
 #
 # Requirements:
 #   linux, lftp, cron
