@@ -10,7 +10,7 @@
 #
 # Requirements:
 #   linux, lftp, cron
-#   ftp auth are keept in ~/.netrc 
+#   keep FTP authentifications in ~/.netrc file
 #
 # Usage:
 #   fgcz_robot__sync_qcloud2.bash | qcloud-ext@perelman.crg.es
