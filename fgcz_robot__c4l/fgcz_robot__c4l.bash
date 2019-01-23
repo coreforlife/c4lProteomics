@@ -16,8 +16,17 @@
 # Requirements:
 #   linux, lftp, cron
 #   ftp auth are keept in ~/.netrc 
-# cron config
-#   */59 * * * *  /srv/FGCZ/fgcz/computer/fgcz-s-021/sync/fgcz_robot__c4l.bash 2>&1 >> ~/data/c4l_lftp.log
+#   expect files are kept in '/srv/www/htdocs/Data2San/' having the following file system hierarchy
+# p1000/Proteomics/QEXACTIVE_2/tobiasko_20180913/20180815_01_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/lkunz_20180907_test/20180907_001_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_001_autoQC01.raw
+# p1531/Proteomics/QEXACTIVEHF_1/selevsek_20180911/20180911_22_autoQC01.raw
+# p2883/Proteomics/QEXACTIVEHFX_1/lkunz_20180913_OID4796_DIA/20180913_001_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_002_autoQC01.raw
+# p2883/Proteomics/QEXACTIVEHFX_1/lkunz_20180913_OID4796_DIA/20180913_002_autoQC01.raw
+# p1000/Proteomics/QEXACTIVEHF_2/tobiasko_20180913/20180913_003_autoQC01.raw
+# p1000/Proteomics/FUSION_1/roschi_20180809_autoQC/20180912_07_autoQC01.raw
+# p2748/Proteomics/FUSION_2/lkunz_20180911_OID4763/20180911_025_autoQC01.raw
 
 set -e
 set -o pipefail
@@ -49,7 +58,7 @@ function generate_lftp_cmd(){
   ftpdir=`echo "$file D$dateYM" \
     | sed -n 's/.*Proteomics\/\([A-Z]*_[1-9]\)\/[a-z]*_20\([1-9][0-9][01][0-9]\)[0123][0-9].*\/\(.*\([qQ][cC]0[12]\|[qQ][cC]4[lL]\).*\.raw\).D\([0-9]*\)$/\/fgcz\/\1\/\5\/\4/p'`
 
-  grep -l "$ff" ~cpanse/.lftp/transfer_log 1>/dev/null 2>/dev/null \
+  grep -l "$ff" ~/.lftp/transfer_log 1>/dev/null 2>/dev/null \
   || echo "mirror -R --no-recursion --include $ff $SOURCE/$dd/ $ftpdir" 
 }
 
