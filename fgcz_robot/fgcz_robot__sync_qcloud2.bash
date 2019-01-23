@@ -15,7 +15,6 @@
 # Usage:
 #   fgcz_robot__sync_qcloud2.bash | qcloud-ext@perelman.crg.es
 
-# set -e
 set -o pipefail
 
 scriptname=$(basename $0)
