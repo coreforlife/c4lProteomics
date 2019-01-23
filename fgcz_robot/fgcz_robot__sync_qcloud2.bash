@@ -4,7 +4,7 @@
 #
 # the code is trigged by using cron. A cron entry (crontan) on 
 # our system look like that:
-# */59 * * * *  /srv/FGCZ/fgcz/computer/fgcz-s-021/sync/fgcz_robot__c4l.bash 2>&1 >> ~/data/c4l_lftp.log
+# */59 * * * * (fgcz_robot__sync_qcloud2.bash | qcloud-ext@perelman.crg.es) 2>&1 >> ~/data/c4l_lftp.log
 #
 # Author: Christian Panse <cp@fgcz.ethz.ch>
 #
