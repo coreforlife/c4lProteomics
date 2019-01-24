@@ -2,9 +2,9 @@
 # 
 # Synchronises Mass Spectrometric (MS) Quality Control (QC) data to CRG.ES
 #
-# the code is trigged by using cron. A cron entry (crontan) on 
+# the code is trigged by using cron. A cron entry (crontab) on 
 # our system look like that:
-# */59 * * * * (fgcz_robot__sync_qcloud2.bash | qcloud-ext@perelman.crg.es) 2>&1 >> ~/data/c4l_lftp.log
+# 47 */7 * * *  (/home/cpanse/__checkouts/c4lProteomics/fgcz_robot/fgcz_robot__sync_qcloud2.bash | lftp qcloud-ext@perelman.crg.es)
 #
 # Author: Christian Panse <cp@fgcz.ethz.ch>, 2019
 #
@@ -75,4 +75,4 @@ function main () {
 
 main
 
-exit 0
+exit $?
