@@ -7,7 +7,7 @@
 
 ## Design for R packages
 
-- implemented as R package 
+- implemented as R code snippets / package 
 - comes with documentation how to use and integrate into the system
 - tiny example data
 - should pass `R CMD check c4lProteomic` with 0 NOTES, WARNINGS and ERRORS
