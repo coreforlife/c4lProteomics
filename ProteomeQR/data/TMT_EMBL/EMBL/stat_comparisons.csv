@@ -1,0 +1,5 @@
+nominator,denominator,ratio.name
+single_ko,wt,single_ko_vs_wt
+double_ko,wt,double_ko_vs_wt
+double_ko_vs_wt,single_ko_vs_wt,double_ko_vs_wt_against_single_ko_vs_wt
+double_ko,single_ko,double_ko_vs_single_ko
