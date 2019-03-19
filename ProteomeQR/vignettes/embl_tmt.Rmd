@@ -83,12 +83,16 @@ for (fn in files)
   #remove known contaminants
   x <- x %>%
     dplyr::filter(!grepl("#+", protein_id))
-  x$file <- fn
-  keepnames <- as.character(subset(conditions, file == fn)$col.name)
+  x$file <- basename(fn)
+  
+  keepnames <- as.character(subset(conditions, file == basename(fn))$col.name)
+  
   x <- x[, c("protein_id", "description", "gene_name", "qupm", "top3", "file", keepnames)]
+  
   x <- x %>%
     group_by(protein_id, description, gene_name, qupm, top3, file) %>%
     gather(key = "col.name", value = "value", keepnames)
+  
   x$file <- basename(x$file)
   data <- bind_rows(data, x)
   rm(x, keepnames)

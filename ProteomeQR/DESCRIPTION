@@ -1,6 +1,6 @@
 Package: ProteomeQR
 Type: Package
-Title: Compute the Rectangular Statistical Cartogram
+Title: C4L Proteome Quantification in R
 Version: 0.0.1
 Authors@R: person("Frank", "FRank", 
 		email = "Christian.Panse@gmail.com", 
@@ -11,12 +11,14 @@ Description: Provides ...
 License: GPL-3
 Depends: R (>= 3.5)
 Suggests:
-	colorspace,
-	doParallel,
-	knitr,
-	lattice,
-	shiny,
-	testthat,
-	xtable
+    MSnbase,
+    ProteomeQR,
+    biobroom,
+    fdrtool,
+    glue,
+    gplots,
+    limma,
+    tidyverse,
+    vsn
 VignetteBuilder: knitr
 BugReports: https://github.com/coreforlife/c4lProteomics/issues
