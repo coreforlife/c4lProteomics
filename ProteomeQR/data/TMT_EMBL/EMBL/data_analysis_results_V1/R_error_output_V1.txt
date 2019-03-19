@@ -1,4 +1,0 @@
-Warnmeldungen:
-1: Paket 'tidyverse' wurde unter R Version 3.4.4 erstellt 
-2: Paket 'stringr' wurde unter R Version 3.4.4 erstellt 
-3: Paket 'glue' wurde unter R Version 3.4.4 erstellt 
