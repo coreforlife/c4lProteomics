@@ -4,6 +4,10 @@ subtitle: "Version 1"
 author: "Frank"
 date: "`r Sys.Date()`"
 output: pdf_document
+vignette: >
+  %\VignetteIndexEntry{embl tmp}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
  
 ```{r setup, include = FALSE}
@@ -29,6 +33,7 @@ getwd()
 ##Loading packages
 
 ```{r}
+library(ProteomeQR)
 library(glue)
 library(glue)
 library(vsn)
@@ -58,15 +63,16 @@ if (!dir.exists(dir_save))
 
 #Loading data and annotating experimental conditions
 
-```{r}
-conditions <- read.delim("metadata.csv", sep = ",")
-files <- file.path(unique(conditions$file))
+```{r read}
+(metadatafilename <- file.path(path.package(package = 'ProteomeQR'), 'extdata/embl/tmt/metadata.csv'))
+conditions <- read.delim(metadatafilename, sep = ",")
+files <- file.path(path.package(package = 'ProteomeQR'), 'extdata', 'embl', 'tmt', unique(conditions$file))
 files <- files[file.exists(files)]
 data <- NULL
-for (i in seq_along(files))
+for (fn in files)
 {
-  print(files[i])
-  x <- read_delim(file.path(files[i]), delim = "\t")
+  x <- read_delim(fn, delim = "\t")
+
   names(x) <- make.names(names(x))
   #keep only proteins with at least two unique peptide matches
   x <- x %>%
@@ -77,12 +83,13 @@ for (i in seq_along(files))
   #remove known contaminants
   x <- x %>%
     dplyr::filter(!grepl("#+", protein_id))
-  x$file <- files[i]
-  keepnames <- as.character(subset(conditions, file == files[i])$col.name)
+  x$file <- fn
+  keepnames <- as.character(subset(conditions, file == fn)$col.name)
   x <- x[, c("protein_id", "description", "gene_name", "qupm", "top3", "file", keepnames)]
   x <- x %>%
     group_by(protein_id, description, gene_name, qupm, top3, file) %>%
     gather(key = "col.name", value = "value", keepnames)
+  x$file <- basename(x$file)
   data <- bind_rows(data, x)
   rm(x, keepnames)
 }
