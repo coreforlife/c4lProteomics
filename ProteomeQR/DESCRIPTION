@@ -1,0 +1,22 @@
+Package: ProteomeQR
+Type: Package
+Title: Compute the Rectangular Statistical Cartogram
+Version: 0.0.1
+Authors@R: person("Frank", "FRank", 
+		email = "Christian.Panse@gmail.com", 
+		role = c("aut", "cre"),
+		comment = c(ORCID = "0000-0003-1975-3064"))
+Maintainer: Christian Panse <cp@fgcz.ethz.ch>
+Description: Provides ...
+License: GPL-3
+Depends: R (>= 3.5)
+Suggests:
+	colorspace,
+	doParallel,
+	knitr,
+	lattice,
+	shiny,
+	testthat,
+	xtable
+VignetteBuilder: knitr
+BugReports: https://github.com/coreforlife/c4lProteomics/issues
