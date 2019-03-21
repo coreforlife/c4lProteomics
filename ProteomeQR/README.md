@@ -15,10 +15,9 @@ run R and type
 
 ```{r}
 install.packages('http://fgcz-ms.uzh.ch/~cpanse/ProteomeQR_0.0.1.tar.gz', repo=NULL)
-```
 
-to browse the reports type:
-```{r}
+
+# to browse the reports type:
 browseVignettes('ProteomeQR')
 ```
 
