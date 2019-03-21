@@ -5,6 +5,7 @@
 
 ## Compose R package
 
+
 https://github.com/coreforlife/c4lProteomics/tree/master/ProteomeQR
 
 ```{r}
@@ -27,3 +28,10 @@ run R and type
 ```{r}
 browseVignettes('ProteomeQR')
 ```
+
+## Download current R package
+
+includes built vignettes
+
+http://fgcz-ms.uzh.ch/~cpanse/ProteomeQR_0.0.1.tar.gz
+
