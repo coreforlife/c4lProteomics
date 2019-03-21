@@ -9,5 +9,5 @@
 
 - comes with documentation how to use and integrate into the system
 - tiny example data
-- should pass `R CMD check c4lProteomic` with 0 NOTES, WARNINGS and ERRORS
+- should pass `R CMD check ProteomeQR` with 0 NOTES, WARNINGS and ERRORS
 - if possible import is minimalistic, no Bioconductor or long chains of package dependencies 
