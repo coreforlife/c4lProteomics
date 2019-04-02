@@ -4,7 +4,7 @@ Title: C4L Proteome Quantification in R
 Version: 0.0.1
 Authors@R: c(person("Frank", "Stein", 
 		email = "frank.stein@embl.de", 
-		role = c("aut", "cre"),
+		role = c("aut" ),
 		comment = c(ORCID = "0000-0001-9695-1692")),
 		person("Witold", "Wolski", 
 		email = "wew@fgcz.ethz.ch", 
