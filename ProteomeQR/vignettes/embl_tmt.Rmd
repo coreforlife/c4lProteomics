@@ -64,11 +64,19 @@ if (!dir.exists(dir_save))
 #Loading data and annotating experimental conditions
 
 ```{r read}
-(metadatafilename <- file.path(path.package(package = 'ProteomeQR'), 'extdata/embl/tmt/metadata.csv'))
+(datapath <- file.path(path.package(package = 'ProteomeQR'),
+    'extdata', 'embl', 'tmt'))
+
+metadatafilename <- file.path(datapath, 'metadata.csv')
+
 conditions <- read.delim(metadatafilename, sep = ",")
-files <- file.path(path.package(package = 'ProteomeQR'), 'extdata', 'embl', 'tmt', unique(conditions$file))
+
+files <- file.path(datapath, unique(conditions$file))
+
 files <- files[file.exists(files)]
+
 data <- NULL
+
 for (fn in files)
 {
   x <- read_delim(fn, delim = "\t")
@@ -104,7 +112,7 @@ data <- subset(data, value > 0)
 
 #Protein identification overview
 
-```{r}
+```{r ProteinIdentificationOverview}
 sub <- unique(data[, c("gene_name", "file", "rep")])
 sub$found <- 1
 sub$file_old <- sub$file
