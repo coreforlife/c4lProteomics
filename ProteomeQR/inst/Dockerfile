@@ -10,6 +10,7 @@ RUN apt-get install \
   libssl-dev \
   libxml2-dev \
   openssl \
+  pandoc \
   pandoc-citeproc \
   texlive-full \
   -y 
@@ -36,5 +37,5 @@ RUN cd /tmp \
  && curl -s https://codeload.github.com/coreforlife/c4lProteomics/zip/master \
  > c4lProteomics.zip && unzip c4lProteomics.zip 
 RUN cd /tmp/c4lProteomics-master \
- && R CMD build ProteomeQR  \
- && R CMD INSTALL ProteomeQR*.gz 
+ && R CMD build ProteomeQR  
+RUN cd /tmp/c4lProteomics-master  && R CMD INSTALL ProteomeQR*.gz 
