@@ -1,3 +1,14 @@
+---
+title: "mpi cbg demo"
+subtitle: "Version 1"
+author: "Lena"
+date: "`r Sys.Date()`"
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{mpi tmp}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 # Differential abundance analysis
 
@@ -6,7 +17,9 @@ Created by: `r system("whoami", intern=T)`
 Created at: `r format(Sys.Date(), format="%B %d %Y")`
 
 ```{r }
+library(ProteomeQR)
 ```
+
 ```{r include=FALSE}
 suppressMessages(require(docopt))
 
@@ -26,33 +39,41 @@ Options:
 opts = docopt(doc, commandArgs(TRUE))
 
 ```
-```{r }
-devtools::source_url("https://git.mpi-cbg.de/bioinfo/datautils/raw/v1.49/R/core_commons.R")
-devtools::source_url("https://git.mpi-cbg.de/bioinfo/datautils/raw/v1.49/R/ggplot_commons.R")
-devtools::source_url("https://git.mpi-cbg.de/bioinfo/ngs_tools/raw/v10/dge_workflow/diffex_commons.R")
-install_package("cummeRbund")
-load_pack(knitr)
-load_pack(gridExtra)
-load_pack(limma)
-load_pack(edgeR)
-load_pack(GGally)
-load_pack(corrplot)
-load_pack(d3heatmap)
-load_pack(limma)
-load_pack(edgeR)
 
+```{r library}
+# devtools::source_url("https://git.mpi-cbg.de/bioinfo/datautils/raw/v1.49/R/core_commons.R")
+# devtools::source_url("https://git.mpi-cbg.de/bioinfo/datautils/raw/v1.49/R/ggplot_commons.R")
+# devtools::source_url("https://git.mpi-cbg.de/bioinfo/ngs_tools/raw/v10/dge_workflow/diffex_commons.R")
+# install_package("cummeRbund")
 
+library(knitr)
+library(gridExtra)
+library(limma)
+library(edgeR)
+library(GGally)
+library(corrplot)
+library(d3heatmap)
+library(limma)
+library(edgeR)
 ```
-```{r }
+
+```{r opts}
 results_prefix = "limma"
 
+print(opts)
 
 ## process input arguments
-count_matrix_file = "data_prep.intens_imputed.txt"
-design_matrix_file = opts$design_matrix
-contrasts_file = opts$contrasts
-protein_info_file = opts$protein_info
-ms_data_infos = opts$data_prep_folder
+ms_data_infos <- tempdir()
+setwd(ms_data_infos)
+
+ProteomeQRdir <- file.path(path.package(package = 'ProteomeQR'), "extdata", "mpi-cbg")
+count_matrix_file <- file.path(ProteomeQRdir,  "data_prep.intens_imputed.txt")
+design_matrix_file <- file.path(ProteomeQRdir, "exp_design.txt")
+contrasts_file <- opts$contrasts
+protein_info_file <-  opts$protein_info
+
+# file.copy( count_matrix_file , file.path(ms_data_infos, "data_prep.intens_imputed.txt"))
+# file.copy( design_matrix_file, file.path(ms_data_infos, "exp_design.txt"))
 assert(is.null(protein_info_file) || file.exists(protein_info_file), "invalid protein_info_file")
 
 
@@ -71,7 +92,7 @@ lfc_cutoff = if (is.null(opts$lfc))0 else as.numeric(opts$lfc)
 
 Run configuration was
 
-```{r }
+```{r RunConfiguration}
 vec_as_df(unlist(opts)) %>%
     filter(! str_detect(name, "^[<-]")) %>%
     kable()
@@ -91,9 +112,8 @@ vec_as_df(unlist(opts)) %>%
 
 experimental design:
 
-```{r }
-expDesign = read_tsv("exp_design.txt")
-#expDesign = read_tsv(design_matrix_file)
+```{r readdesign_matrix_file}
+expDesign = read_tsv(design_matrix_file)
 kable(expDesign)
 ```
 
