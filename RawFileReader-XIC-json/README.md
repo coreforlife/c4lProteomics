@@ -1,6 +1,6 @@
 # extract XIC from ThermoFisher raw files 
 
-running C# code snippet 
+this folder contains a running C# code snippet 
 
 
 ## 1. System Requirements
@@ -13,6 +13,7 @@ a Windows/Linux/MacOSX x64 platform
 - https://www.mono-project.com/ (>4.0.22) for (Linux and MacOSX)
 - .NET Framework 4.5.1 or higher (Windows)
 - The [New RawFileReader from Thermo Fisher Scientific](http://planetorbitrap.com/rawfilereader)
+dlls should be in the folder containing the mono exe file
 
 ## commandline options
 
