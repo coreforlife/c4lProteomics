@@ -93,5 +93,5 @@ python json_test.py
 
 ## cite
 
-- The [New RawFileReader from Thermo Fisher Scientific](http://planetorbitrap.com/rawfilereader)
+- The [New RawFileReader from Thermo Fisher Scientific](http://planetorbitrap.com/rawfilereader).
 - [rawDiag, DOI: 10.1021/acs.jproteome.8b00173](https://pubs.acs.org/doi/10.1021/acs.jproteome.8b00173).
