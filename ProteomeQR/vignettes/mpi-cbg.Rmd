@@ -3,7 +3,11 @@ title: "mpi cbg demo"
 subtitle: "Version 1"
 author: "Lena"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document:
+    toc: true
+    theme: united
+
 vignette: >
   %\VignetteIndexEntry{mpi tmp}
   %\VignetteEngine{knitr::rmarkdown}
@@ -20,7 +24,7 @@ Created at: `r format(Sys.Date(), format="%B %d %Y")`
 library(ProteomeQR)
 ```
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE}
 suppressMessages(require(docopt))
 
 doc = '
@@ -60,7 +64,7 @@ library(edgeR)
 ```{r opts}
 results_prefix = "limma"
 
-print(opts)
+# print(opts)
 
 ## process input arguments
 ms_data_infos <- tempdir()
@@ -69,30 +73,39 @@ setwd(ms_data_infos)
 ProteomeQRdir <- file.path(path.package(package = 'ProteomeQR'), "extdata", "mpi-cbg")
 count_matrix_file <- file.path(ProteomeQRdir,  "data_prep.intens_imputed.txt")
 design_matrix_file <- file.path(ProteomeQRdir, "exp_design.txt")
-contrasts_file <- opts$contrasts
-protein_info_file <-  opts$protein_info
+#contrasts_file <- opts$contrasts
+contrasts_file <- file.path(ProteomeQRdir, "exp_design.txt")
+#protein_info_file <-  opts$protein_info
+protein_info_file <- file.path(ProteomeQRdir, "data_prep.feature_information.txt")
+
 
 # file.copy( count_matrix_file , file.path(ms_data_infos, "data_prep.intens_imputed.txt"))
 # file.copy( design_matrix_file, file.path(ms_data_infos, "exp_design.txt"))
-assert(is.null(protein_info_file) || file.exists(protein_info_file), "invalid protein_info_file")
+#assert(is.null(protein_info_file) || file.exists(protein_info_file), "invalid protein_info_file")
 
 
-designFormula = opts$design
+#designFormula = opts$design
+designFormula <- "condition"
 assert(str_detect(designFormula, "^condition.*")) ## make sure that the condition comes before all batch factors
 
 
-if (!is.null(opts$out)){  results_prefix = opts$out }
+#if (!is.null(opts$out)){  results_prefix = opts$out }
+ results_prefix = ''
 
-pcutoff = if (is.null(opts$pcutoff))NULL else as.numeric(opts$pcutoff)
-qcutoff = if (is.numeric(pcutoff))NULL else as.numeric(opts$qcutoff)
-if (is.numeric(pcutoff))opts$qcutoff = NULL
+#pcutoff = if (is.null(opts$pcutoff))NULL else as.numeric(opts$pcutoff)
+#qcutoff = if (is.numeric(pcutoff))NULL else as.numeric(opts$qcutoff)
+#if (is.numeric(pcutoff))opts$qcutoff = NULL
 
-lfc_cutoff = if (is.null(opts$lfc))0 else as.numeric(opts$lfc)
+pcutoff <- 0
+qcutoff <- 0
+
+# lfc_cutoff = if (is.null(opts$lfc))0 else as.numeric(opts$lfc)
+lfc_cutoff <- 0
 ```
 
 Run configuration was
 
-```{r RunConfiguration}
+```{r RunConfiguration, eval=FALSE}
 vec_as_df(unlist(opts)) %>%
     filter(! str_detect(name, "^[<-]")) %>%
     kable()
@@ -103,6 +116,7 @@ vec_as_df(unlist(opts)) %>%
 
 
 ```{r }
+library(ProteomeQR)
 ```
 
 

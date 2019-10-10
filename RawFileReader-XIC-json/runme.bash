@@ -4,7 +4,7 @@
 MONO=mono
 RAWFILE=20190124_03_autoQC4L.raw
 TOLPPM=10
-MASSFILE=masses.txt
+MASSFILE=mp2h2p-LASVSVSR.txt 
 OUTPUT=output.json
 
 ${MONO} fgcz-xic.exe ${RAWFILE} info
