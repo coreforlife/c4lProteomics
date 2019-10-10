@@ -1,5 +1,6 @@
 # extract XIC from ThermoFisher raw files 
 
+this folder contains a running C# code snippet 
 
 
 ## 1. System Requirements
@@ -12,6 +13,29 @@ a Windows/Linux/MacOSX x64 platform
 - https://www.mono-project.com/ (>4.0.22) for (Linux and MacOSX)
 - .NET Framework 4.5.1 or higher (Windows)
 - The [New RawFileReader from Thermo Fisher Scientific](http://planetorbitrap.com/rawfilereader)
+dlls should be in the folder containing the [mono exe file](https://github.com/coreforlife/c4lProteomics/releases/tag/xic)
+
+
+## required files
+
+your directory should look like that
+```
+$  (master)> ls -l
+total 427424
+-r--r--r--  1 cp  staff  217738234 Oct  8 15:02 20190124_03_autoQC4L.raw
+-rwxr-xr-x  1 cp  staff        309 Oct  8 15:02 Makefile
+-rw-r--r--  1 cp  staff       5590 Oct  8 15:12 README.md
+-rw-r--r--  1 cp  staff      43520 Oct  8 15:02 ThermoFisher.CommonCore.BackgroundSubtraction.dll
+-rw-r--r--  1 cp  staff     360448 Oct  8 15:02 ThermoFisher.CommonCore.Data.dll
+-rw-r--r--  1 cp  staff      11264 Oct  8 15:02 ThermoFisher.CommonCore.MassPrecisionEstimator.dll
+-rw-r--r--  1 cp  staff     620544 Oct  8 15:02 ThermoFisher.CommonCore.RawFileReader.dll
+-rw-r--r--  1 cp  staff      16238 Oct  8 15:02 fgcz-xic.cs
+-rwxr-xr-x  1 cp  staff      13312 Oct  8 15:23 fgcz-xic.exe
+-rw-r--r--  1 cp  staff        116 Oct  8 15:02 json_test.py
+-rw-r--r--  1 cp  staff         18 Oct  8 15:02 masses.txt
+-rw-r--r--  1 cp  staff       3915 Oct  8 15:24 output.json
+-rwxr-xr-x  1 cp  staff        302 Oct  8 15:02 runme.bash
+```
 
 ## commandline options
 
@@ -91,5 +115,5 @@ python json_test.py
 
 ## cite
 
-- The [New RawFileReader from Thermo Fisher Scientific](http://planetorbitrap.com/rawfilereader)
+- The [New RawFileReader from Thermo Fisher Scientific](http://planetorbitrap.com/rawfilereader).
 - [rawDiag, DOI: 10.1021/acs.jproteome.8b00173](https://pubs.acs.org/doi/10.1021/acs.jproteome.8b00173).
