@@ -3,9 +3,9 @@
 
 ## Goal
 
-- collect `bash` or `R` code of interest for all [c4l](https://coreforlife.eu/) sites, e.g., instrument queue generator and future hackathons
+- collect `bash` or `R` code snippets of interest for all [c4l](https://coreforlife.eu/) sites, e.g., instrument queue generator and future hackathons
 
-## Design for R code snippets /  packages
+## Design policy for R code snippets /  packages
 
 - comes with documentation how to use and integrate into the system
 - tiny example data

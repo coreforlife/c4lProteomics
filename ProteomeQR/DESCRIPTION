@@ -27,6 +27,7 @@ Suggests:
     glue,
     gplots,
     limma,
+    session,
     tidyverse,
     vsn
 VignetteBuilder: knitr
