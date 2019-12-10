@@ -27,6 +27,14 @@ flock -n 200 || exit 1
 # given by <roger.olivella@crg.eu>
 #######################################
 declare -A labsysid=(["QEXACTIVEHF_2"]="41102513-a4c3-4e23-9a05-3151620a7c8c"
+  ["LUMOS_1"]="a905ed8a-19a3-4c74-ac47-0d663219e54d"
+  ["FUSION_2"]="4764a3a7-30c8-407d-a70e-1a5eb7685a41"
+  ["LUMOS_2"]="35a9d558-f557-4ef6-923f-26b484b5c3f0"
+  ["EXPLORIS_1"]="5a975002-8db4-4789-b832-c09ec4ad76af"
+  ["QEXACTIVEHF_1"]="05a8c997-e77f-4add-a55e-ec3c40cbc98b"
+  ["QEXACTIVEHF_4"]="50505a0b-7fc9-471e-b8c1-61fb51ed9b3b"
+  ["QEXACTIVE_1"]="f96990c5-5d2a-42ac-8b38-31d341be673d"
+  ["QEXACTIVE_2"]="d408f3e5-1371-4767-a631-5b6774206c23"
   ["QEXACTIVEHFX_1"]="fef21e50-b532-4c0e-9669-852972e28366")
 
 #######################################
@@ -48,12 +56,13 @@ INPUT=/srv/www/htdocs/Data2San/sync_LOGS/pfiles.txt
 #   stdout
 #######################################
 function compose_lftp_command () {
-  grep $6 ~/.lftp/transfer_log > /dev/null
+  grep "`basename $2`\|$6" ~/.lftp/transfer_log > /dev/null
   if [ $? -eq 0 ]
     then 
       echo "# file '$2' ALREADY COPIED"
     else
       echo "put $1$2 -o $3_${labsysid[$4]}_$5_$6.raw"
+      echo "sleep 1"
   fi
 }
 
@@ -61,12 +70,13 @@ function compose_lftp_command () {
 function main () {
   set -x
   local INSTRUMENTPATTERN=`echo ${!labsysid[@]} | tr " " "|"`
+  # local QCPATTERN="(autoQC01).*\.raw$"
   local QCPATTERN="(autoQC4L|autoQC01).*\.raw$"
   local now=`date  "+%s"`
 
   set +x
 
-  awk -F';' -v now=$now '$2 > (now - 60 * 60 * 36){print}' $INPUT \
+  awk -F';' -v now=$now '$2 > (now - 60 * 60 * 24 * 10){print}' $INPUT \
     | egrep "(${INSTRUMENTPATTERN}).*${QCPATTERN}" \
     | while read i;
     do 
@@ -76,7 +86,7 @@ function main () {
       qctype=`echo $filename | sed 's/.*auto\(QC..\).*/\1/' | sed 's/QC4L/QC03/g'`
       md5=`echo $i | cut -d';' -f1`
     
-      sleep 1
+      #sleep 1
       compose_lftp_command '/srv/www/htdocs/' $filepath $filename $instrument $qctype $md5
     done
 }
