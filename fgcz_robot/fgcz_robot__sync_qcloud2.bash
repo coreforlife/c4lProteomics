@@ -63,7 +63,8 @@ function compose_lftp_command () {
     then 
       echo "# file '$2' ALREADY COPIED"
     else
-      echo "put $1$2 -o $3_${labsysid[$4]}_$5_$6.raw"
+      echo "put $1$2 -o $3_${labsysid[$4]}_$5_$6.raw.filepart"
+      echo "mv $3_${labsysid[$4]}_$5_$6.raw.filepart $3_${labsysid[$4]}_$5_$6.raw"
       echo "sleep 1"
   fi
 }
@@ -73,12 +74,12 @@ function main () {
   #set -x
   local INSTRUMENTPATTERN=`echo ${!labsysid[@]} | tr " " "|"`
   # local QCPATTERN="(autoQC01).*\.raw$"
-  local QCPATTERN="(autoQC4L|autoQC01).*\.raw$"
+  local QCPATTERN="(autoQC03dda|autoQC01).*\.raw$"
   local now=$(date  "+%s")
 
   #set +x
 
-  awk -F';' -v now=$now '$2 > (now - 60 * 60 * 24){print}' $INPUT \
+  awk -F';' -v now=$now '$2 > (now - 60 * 60 * 96){print}' $INPUT \
     | egrep "(${INSTRUMENTPATTERN}).*${QCPATTERN}" \
     | while read i;
     do 
